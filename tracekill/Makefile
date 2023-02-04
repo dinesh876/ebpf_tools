@@ -27,11 +27,8 @@ fmt: sum
 .PHONY: clean
 clean:
 	-rm $(APP)
-	-rm src/gen*
-	-rm src/bpf/vmlinux.h
+	-rm src/bpf_bpfe*
 	-rm go.sum
-	sed 's/v.*/latest/g' -i go.mod
-
 $(APP): src/main.go src/bpf_bpfel.go
 	# to generate  little endian binary
 	go build -o $(APP) src/main.go src/bpf_bpfel.go
